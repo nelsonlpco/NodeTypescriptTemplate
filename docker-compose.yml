@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+    nodedev:
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        container_name: node-typescript-template
+        volumes: 
+            - ./src:/app/src
+        ports:
+            - "8080:8080"
+            - "8181:8181"
+        command: npm run dev
+    
+    sonar:
+        image: sonarqube:8.2-community
+        ports: 
+            - "9000:9000"
